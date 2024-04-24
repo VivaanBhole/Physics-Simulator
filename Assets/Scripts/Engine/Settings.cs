@@ -15,8 +15,9 @@ public class Settings : MonoBehaviour
     }
 
     //Properties
-    public byte[] Volumes { get; set; } = { 100, 100, 100, 100 }; 
+    public byte Volume { get; set; } = 100;
     public TextSize Size { get; set; } = TextSize.Medium;
+    public float Sensitivity {get; set; } = 2f;
 
     private void Awake()
     {
@@ -25,7 +26,7 @@ public class Settings : MonoBehaviour
             Destroy(this);
         else
         {
-            // Things
+            Instance = this;
         }
     }
 
