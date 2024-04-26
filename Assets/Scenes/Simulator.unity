@@ -433,6 +433,9 @@ MonoBehaviour:
   maxVerticalAngle: 90
   floorY: 0.75
   mouseSensitivity: 5
+  motionLocked: 0
+  lookingLocked: 0
+  selection: {fileID: 2233361289950314484, guid: dbb7ab1048b3e204382d0e0de9d982b0, type: 3}
 --- !u!1 &1915926267
 GameObject:
   m_ObjectHideFlags: 0

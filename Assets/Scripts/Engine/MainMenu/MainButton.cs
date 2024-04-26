@@ -13,6 +13,6 @@ public class MainButton : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData data)
     {
-        
+        SceneManager.LoadScene("Simulator");
     }
 }
