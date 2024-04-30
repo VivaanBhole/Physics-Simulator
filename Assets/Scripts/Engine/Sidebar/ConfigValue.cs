@@ -47,3 +47,13 @@ public class ConfigValue
     }
 
 }
+
+public class ConfigValueEventArgs : EventArgs
+{
+    public ConfigValueEventArgs(ConfigValue value)
+    {
+        configValueData = value;
+    }
+
+    public readonly ConfigValue configValueData;
+}
