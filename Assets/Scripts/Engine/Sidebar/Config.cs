@@ -23,6 +23,7 @@ public class Config : MonoBehaviour
         else
         {
             Instance = this;
+            ConfigChangedHandlers.registerHandlers();
         }
     }
 }
