@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     private Outline _outline;
 
     public enum PlacingMode{
-        Place, Delete, Rotate, None
+        Place, Delete, None
     }
 
     [NonSerialized] public PlacingMode Mode;
@@ -77,10 +77,10 @@ public class Player : MonoBehaviour
             OutlineObject();
 
         if (Mode == PlacingMode.Place)
+        {
             HandlePlacementInputs();
-
-        if (Mode == PlacingMode.Rotate)
             HandleRotationInputs();
+        }
 
         //placing elements modes
 
@@ -89,8 +89,6 @@ public class Player : MonoBehaviour
             {
                 case PlacingMode.Place:
                     Mode = PlacingMode.None; break;
-                case PlacingMode.Rotate:
-                    Mode = PlacingMode.Place; break;
                 case PlacingMode.Delete:
                     if(_outline) _outline.color = 0;
                     goto case PlacingMode.Place;
@@ -99,15 +97,6 @@ public class Player : MonoBehaviour
                         StartCoroutine(PlaceBlock(Instantiate(selection)));
                     break;
                 }
-
-        if(Input.GetKeyDown(KeyCode.R)) 
-            switch (Mode)
-            {
-                case PlacingMode.Place: 
-                    Mode = PlacingMode.Rotate; break;
-                case PlacingMode.Rotate: 
-                    Mode = PlacingMode.Place; break;
-            }
 
         //delete mode
 
@@ -155,20 +144,16 @@ public class Player : MonoBehaviour
 
 
 
-        while ((!Input.GetMouseButton(1) || !placementDetector.isValid) && (Mode == PlacingMode.Place || Mode == PlacingMode.Rotate))
+        while ((!Input.GetMouseButton(1) || !placementDetector.isValid) && Mode == PlacingMode.Place)
         {
-            switch (Mode)
-            {
-                case PlacingMode.Place:
-                    elementTransform.position = transform.position + transform.forward * _pDistance; break;
-                case PlacingMode.Rotate:
-                    elementTransform.eulerAngles = RoundDown(_pRotation, _pRotationRes); break;
-            }
+            elementTransform.position = transform.position + transform.forward * _pDistance;
+            elementTransform.eulerAngles = RoundDown(_pRotation, _pRotationRes);
+
             yield return new WaitForSeconds(_pUpdateTime);
             Debug.Log("looping");
         }
 
-        if(Mode != PlacingMode.Place && Mode != PlacingMode.Rotate)
+        if(Mode != PlacingMode.Place)
         {
             Destroy(element);
         }
