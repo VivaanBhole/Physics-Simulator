@@ -330,6 +330,8 @@ MonoBehaviour:
   _floorY: 0.75
   _pUpdateTime: 0.004
   _pAdjustmentSpeed: 5
+  _pRotationSpeed: 60
+  _pRotationRes: 15
   CanMove: 1
   CanLook: 1
   CanPlace: 1
