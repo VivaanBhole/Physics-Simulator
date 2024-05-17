@@ -5,5 +5,9 @@ using UnityEngine;
 
 public class Element : MonoBehaviour
 {
-    public bool conductive, locked, ideal;
+    //Mass, charge, isConuctive, isLocked, velocity, acceleration, forces
+
+    public float Mass, Charge;
+    public Vector3 Velocity, Acceleration, MagtneticForce, ElectricForce, GravitationalForce, NormalForce;
+
 }

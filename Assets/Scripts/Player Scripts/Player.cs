@@ -3,7 +3,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Linq;
 using System.Reflection;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -57,7 +59,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Mode: "+Mode);
 
         //for testing only
         if (Input.GetKeyDown(KeyCode.Escape)) 
@@ -94,7 +95,7 @@ public class Player : MonoBehaviour
                     goto case PlacingMode.Place;
                 case PlacingMode.None:
                     if(CanInteract)
-                        StartCoroutine(PlaceBlock(Instantiate(selection)));
+                        StartCoroutine(PlaceElement(Instantiate(selection)));
                     break;
                 }
 
@@ -127,30 +128,59 @@ public class Player : MonoBehaviour
         UpdatePosition();
     }
 
-    public IEnumerator PlaceBlock(GameObject element)
+    public void OutlineObject()
     {
+        Transform go = GetObjectInFront();
+        Element e;
+        if (!go || !(e = go.GetComponentInChildren<Element>()))
+        {
+            _outlinedElement = null;
+            Destroy(_outline);
+            return;
+        }
+
+        if (_outlinedElement == null || !go.Equals(_outlinedElement))
+        {
+            _outlinedElement = go;
+
+            if (_outline)
+                Destroy(_outline);
+
+            _outline = e.gameObject.AddComponent<Outline>();
+            if (Mode == PlacingMode.Delete)
+                _outline.color = 1;
+        }
+    }
+
+    public IEnumerator PlaceElement(GameObject element)
+    {
+        element.name = Time.frameCount+"";
         Collider collider = element.GetComponentInChildren<Collider>();
         Transform elementTransform = element.transform;
         Rigidbody elementRB = GetOrAddRigidbody(element);
 
         PlacementDetector placementDetector = elementRB.gameObject.AddComponent<PlacementDetector>();
-        Debug.Log(element.name);
 
         collider.isTrigger = true;
 
         CanInteract = false;
         elementRB.isKinematic = true;
         Mode = PlacingMode.Place;
+        ConnectionPoint.isVisible = true;
 
+        CircuitElement circuitElement = element.GetComponentInChildren<CircuitElement>();
 
 
         while ((!Input.GetMouseButton(1) || !placementDetector.isValid) && Mode == PlacingMode.Place)
         {
-            elementTransform.position = transform.position + transform.forward * _pDistance;
-            elementTransform.eulerAngles = RoundDown(_pRotation, _pRotationRes);
+            elementTransform.localEulerAngles = RoundDown(_pRotation, _pRotationRes);
+
+            if (circuitElement)
+                elementTransform.position = circuitElement.GetDesiredPos(transform.position + transform.forward * _pDistance);
+            else
+                elementTransform.position = transform.position + transform.forward * _pDistance;
 
             yield return new WaitForSeconds(_pUpdateTime);
-            Debug.Log("looping");
         }
 
         if(Mode != PlacingMode.Place)
@@ -165,35 +195,21 @@ public class Player : MonoBehaviour
             collider.isTrigger = false;
         }
 
+        if (circuitElement)
+        {
+            elementRB.useGravity = false;
+            circuitElement.AddToCircuit();
+        }
+
         CanInteract = true;
+        ConnectionPoint.isVisible = false;
+
     }
 
     private void OpenElementUI(Transform t)
     {
         //TODO
     }
-
-    private Rigidbody GetOrAddRigidbody(GameObject go)
-    {
-        Rigidbody rb = go.GetComponentInChildren<Rigidbody>();
-        if (rb)
-            return rb;
-
-        return go.GetComponentInChildren<Collider>().gameObject.AddComponent<Rigidbody>();
-    }
-
-    private void SetLayerRecursive(GameObject go, int layer)
-    {
-        go.layer = layer;
-        foreach(Transform child in go.transform)
-        {
-            child.gameObject.layer = layer;
-            if(child.childCount > 0)
-               SetLayerRecursive(child.gameObject, layer);
-        }
-    }
-
-
 
     public void HandleMouseMovement()
     {
@@ -309,33 +325,29 @@ public class Player : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 200))
         {
-            return hit.transform;
+            return hit.collider.transform;
         }
         return null;
     }
 
-    public void OutlineObject()
+    private Rigidbody GetOrAddRigidbody(GameObject go)
     {
-        Transform go = GetObjectInFront();
-        Element e;
-        if (!go || !(e = go.GetComponentInChildren<Element>()))
+        Rigidbody rb = go.GetComponentInChildren<Rigidbody>();
+        if (rb)
+            return rb;
+
+        return go.GetComponentInChildren<Collider>().gameObject.AddComponent<Rigidbody>();
+
+    }
+
+    private void SetLayerRecursive(GameObject go, int layer)
+    {
+        go.layer = layer;
+        foreach (Transform child in go.transform)
         {
-            _outlinedElement = null;
-            Destroy(_outline);
-            return;
-        }
-
-        if(_outlinedElement == null || !go.Equals(_outlinedElement))
-        {
-            Debug.Log("Changing Outline");
-            _outlinedElement = go;
-
-            if (_outline)
-                Destroy(_outline);
-
-            _outline = e.gameObject.AddComponent<Outline>();
-            if (Mode == PlacingMode.Delete)
-                _outline.color = 1;
+            child.gameObject.layer = layer;
+            if (child.childCount > 0)
+                SetLayerRecursive(child.gameObject, layer);
         }
     }
 

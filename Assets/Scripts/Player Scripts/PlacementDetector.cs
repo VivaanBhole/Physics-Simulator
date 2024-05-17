@@ -12,6 +12,7 @@ public class PlacementDetector : MonoBehaviour
         _ogColor;
     private int _overlaps;
     private Renderer _renderer;
+    private bool _circuitElement = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,10 @@ public class PlacementDetector : MonoBehaviour
             _renderer.material.color = _valid;
 
         isValid = _overlaps <= 0;
+
+        if (GetComponentInChildren<CircuitElement>())
+            circuitOverride();
+
     }
 
     // Update is called once per frame
@@ -37,6 +42,8 @@ public class PlacementDetector : MonoBehaviour
     }
     private void OnTriggerEnter()
     {
+        if (_circuitElement) return;
+
         _overlaps++;
         if (_overlaps > 0)
         {
@@ -46,15 +53,24 @@ public class PlacementDetector : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log(other.name);
+        Debug.Log("colliding with: "+other.name);
     }
     private void OnTriggerExit()
     {
+        if (_circuitElement) return;
+
         _overlaps--;
         if (_overlaps == 0)
         {
             isValid = true;
             _renderer.material.color = _valid;
         }
+    }
+
+    public void circuitOverride()
+    {
+        isValid = true;
+        _renderer.material.color = _valid;
+        _circuitElement = true;
     }
 }
