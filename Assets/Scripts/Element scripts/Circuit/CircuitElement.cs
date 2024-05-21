@@ -14,11 +14,8 @@ public class CircuitElement : Element
 
     void Start()
     {
-        Debug.Log("start: ");
         foreach (ConnectionPoint connectionPoint in ConnectionPoints)
             connectionPoint.EncompassingElement = this;
-        foreach (ConnectionPoint connectionPoint in ConnectionPoints)
-            Debug.Log(connectionPoint.EncompassingElement.name);
     }
 
     void Update()
@@ -70,14 +67,11 @@ public class CircuitElement : Element
                 {
                     other.EncompassingElement.transform.parent.parent = parent.transform;
                 }
-            parent.AddComponent<Rigidbody>().useGravity = false;
             parent.AddComponent<Circuit>();
         }
         else
         {
             transform.parent.parent = circuit.transform;
         }
-
-        Destroy(GetComponentInChildren<Rigidbody>());
     } 
 }

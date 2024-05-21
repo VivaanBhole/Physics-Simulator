@@ -228,8 +228,9 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194229}
   - component: {fileID: 963194230}
+  - component: {fileID: 963194231}
+  - component: {fileID: 963194232}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -312,31 +313,6 @@ Transform:
   - {fileID: 2123436146}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &963194229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22ae37389f7b6e84193d04b6c50db3b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxSpeed: 0.2
-  _accelerationMagnitude: 0.005
-  _floorY: 0.75
-  _maxVerticalAngle: 90
-  MouseSensitivity: 5
-  _pUpdateTime: 0.004
-  _pAdjustmentSpeed: 40
-  _pRotationSpeed: 60
-  _pRotationRes: 15
-  selection: {fileID: 1088335660892975369, guid: 2f291fb87f029e444ae5f237ccc88286, type: 3}
-  CanMove: 1
-  CanLook: 1
-  CanInteract: 1
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +346,43 @@ MonoBehaviour:
   outlineShaderMaterial: {fileID: 0}
   renderTexture: {fileID: 0}
   extraRenderTexture: {fileID: 0}
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8588dff201185e4a9b1bceee78b1818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxSpeed: 0.2
+  _accelerationMagnitude: 0.005
+  _floorY: 0.75
+  _maxVerticalAngle: 90
+  MouseSensitivity: 5
+  CanMove: 1
+  CanLook: 1
+--- !u!114 &963194232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34cfc17755606ab48aab016aa7436ede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pUpdateTime: 0.004
+  _pAdjustmentSpeed: 40
+  _pRotationSpeed: 60
+  _pRotationRes: 15
+  selection: {fileID: 2233361289950314484, guid: dbb7ab1048b3e204382d0e0de9d982b0, type: 3}
+  CanInteract: 1
 --- !u!1 &1915926267
 GameObject:
   m_ObjectHideFlags: 0

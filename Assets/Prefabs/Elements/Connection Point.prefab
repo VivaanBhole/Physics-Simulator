@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 7671452635039098947}
   - component: {fileID: 7742364245790682286}
   - component: {fileID: 4878511121077161989}
+  - component: {fileID: 5650169611390023368}
   m_Layer: 3
   m_Name: Sphere
   m_TagString: Untagged
@@ -155,3 +156,30 @@ MonoBehaviour:
   Potential: 0
   EncompassingElement: {fileID: 0}
   snapPos: {x: 0, y: 0, z: 0}
+--- !u!54 &5650169611390023368
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3307499845181440660}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 0
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

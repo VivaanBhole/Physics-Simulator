@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Particle Simulator.unity
     guid: fdb6ac36c47970744be6da49275b8531
+  - enabled: 1
+    path: Assets/Scenes/Circuit Simulator.unity
+    guid: 66d31a3f1e7adc743ad5365ba3c002f5
   m_configObjects: {}
