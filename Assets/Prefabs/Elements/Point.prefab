@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d6ca4254e8d28ea4a84369650abbf2fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,7 +126,6 @@ MonoBehaviour:
   ElectricForce: {x: 0, y: 0, z: 0}
   GravitationalForce: {x: 0, y: 0, z: 0}
   NormalForce: {x: 0, y: 0, z: 0}
-  Poition: {x: 0, y: 0, z: 0}
 --- !u!1 &7759141048715930645
 GameObject:
   m_ObjectHideFlags: 0

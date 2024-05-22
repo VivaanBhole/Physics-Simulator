@@ -306,7 +306,7 @@ MonoBehaviour:
   _pAdjustmentSpeed: 40
   _pRotationSpeed: 60
   _pRotationRes: 15
-  selection: {fileID: 2233361289950314484, guid: dbb7ab1048b3e204382d0e0de9d982b0, type: 3}
+  selection: {fileID: 7650965983571462838, guid: 7b36dc80a8d3d3f41a0664fdf92efb42, type: 3}
   CanInteract: 1
 --- !u!81 &975489306
 AudioListener:

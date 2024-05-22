@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2314735053713619603}
   - component: {fileID: 8441389790957814603}
   - component: {fileID: 62868064901857926}
+  - component: {fileID: 6845938208059591243}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -105,6 +106,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6845938208059591243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22421741820752141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30544c66a9fe6ed40be27e4e42adb45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Mass: 0
+  Charge: 0
+  Velocity: {x: 0, y: 0, z: 0}
+  Acceleration: {x: 0, y: 0, z: 0}
+  MagtneticForce: {x: 0, y: 0, z: 0}
+  ElectricForce: {x: 0, y: 0, z: 0}
+  GravitationalForce: {x: 0, y: 0, z: 0}
+  NormalForce: {x: 0, y: 0, z: 0}
+  Finite: 0
+  Length: 0
+  Width: 0
+  AreaChargeDensity: 0
 --- !u!1 &7650965983571462838
 GameObject:
   m_ObjectHideFlags: 0
