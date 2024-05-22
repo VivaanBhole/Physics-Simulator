@@ -172,6 +172,7 @@ public class Placement : MonoBehaviour
     private void HandlePlacementInputs()
     {
         _pDistance += Input.mouseScrollDelta.y * _pAdjustmentSpeed * Time.deltaTime;
+        _pDistance = Mathf.Min(0, _pDistance);
     }
 
     private void HandleRotationInputs()
