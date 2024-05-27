@@ -6,20 +6,21 @@ using UnityEngine;
 
 public class Placement : MonoBehaviour
 {
-    private float _pDistance = 10;
+    protected float _pDistance = 10;
 
-    private Vector3 _pRotation;
+    protected Vector3 _pRotation;
 
-    private Transform _outlinedElement;
-    private Outline _outline;
+    protected Transform _outlinedElement;
+    protected Outline _outline;
 
     [Header("Placement Settings")]
-    [SerializeField] private float _pUpdateTime;
-    [SerializeField] private float _pAdjustmentSpeed;
-    [SerializeField] private float _pRotationSpeed;
-    [SerializeField] private float _pRotationRes;
+    [SerializeField] protected float _pUpdateTime;
+    [SerializeField] protected float _pAdjustmentSpeed;
+    [SerializeField] protected float _pRotationSpeed;
+    [SerializeField] protected float _pRotationRes;
+    [SerializeField] protected Hotbar _hotbar;
     //[NonSerialized]
-    public GameObject selection;
+    [SerializeField] private ElementData _selection;
 
     public bool CanInteract;
 
@@ -34,7 +35,16 @@ public class Placement : MonoBehaviour
     void Start()
     {
         Mode = PlacingMode.None;
+    }
 
+    private void OnEnable()
+    {
+        _hotbar.updateSelection += SetSelection;
+    }
+
+    private void OnDisable()
+    {
+        _hotbar.updateSelection -= SetSelection;
     }
 
     // Update is called once per frame
@@ -64,7 +74,7 @@ public class Placement : MonoBehaviour
                     goto case PlacingMode.Place;
                 case PlacingMode.None:
                     if (CanInteract)
-                        StartCoroutine(PlaceElement(Instantiate(selection)));
+                        StartCoroutine(PlaceElement(Instantiate(_selection.GetDefaultObject())));
                     break;
             }
 
@@ -119,7 +129,7 @@ public class Placement : MonoBehaviour
         }
     }
 
-    public IEnumerator PlaceElement(GameObject element)
+    public virtual IEnumerator PlaceElement(GameObject element)
     {
         element.name = Time.frameCount + "";
         Collider collider = element.GetComponentInChildren<Collider>();
@@ -195,7 +205,7 @@ public class Placement : MonoBehaviour
         }
     }
 
-    private Vector3 RoundDown(Vector3 vector, float round)
+    protected Vector3 RoundDown(Vector3 vector, float round)
     {
 
         return new Vector3(
@@ -216,10 +226,13 @@ public class Placement : MonoBehaviour
     private Rigidbody GetOrAddRigidbody(GameObject go)
     {
         Rigidbody rb = go.GetComponentInChildren<Rigidbody>();
-        if (rb)
-            return rb;
 
-        return go.GetComponentInChildren<Element>().gameObject.AddComponent<Rigidbody>();
+        if (!rb)
+            rb = go.GetComponentInChildren<Element>().gameObject.AddComponent<Rigidbody>();
+
+        //rb.useGravity = false;
+
+        return rb;
 
     }
 
@@ -232,5 +245,10 @@ public class Placement : MonoBehaviour
             if (child.childCount > 0)
                 SetLayerRecursive(child.gameObject, layer);
         }
+    }
+
+    private void SetSelection(ElementData s)
+    {
+        _selection = s;
     }
 }

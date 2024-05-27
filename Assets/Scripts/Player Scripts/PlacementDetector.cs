@@ -47,7 +47,6 @@ public class PlacementDetector : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log("colliding with: "+other.name);
     }
     private void OnTriggerExit()
     {
