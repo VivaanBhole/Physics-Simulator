@@ -26,18 +26,13 @@ public class ConfigValue
             bool inBounds = valueRange[0] <= value && value <= valueRange[2];
 
             if (inBounds)
-            {
                 valueRange[1] = value;
-                return;
-            }
-
-            if (value <= valueRange[0])
+            else if (value <= valueRange[0])
                 valueRange[1] = valueRange[0];
             else if (value >= valueRange[2])
                 valueRange[1] = valueRange[2];
 
-            if (ConfigChanged is not null)
-                ConfigChanged.Invoke(this);
+            ConfigChanged?.Invoke(this);
         }
     }
 
@@ -51,17 +46,22 @@ public class ConfigValue
         set
         {
             _checkbox = value;
-            if (ConfigChanged is not null)
-                ConfigChanged.Invoke(this);
+            ConfigChanged?.Invoke(this);
         }
     }
 
     public ConfigValue(Type flags, bool checkboxInitialState = false, float[] valueRange = null)
     {
+        ConfigChanged = new();
         type = flags;
         Checkbox = checkboxInitialState;
         if (valueRange is not null)
             this.valueRange = valueRange; 
+    }
+
+    public override string ToString()
+    {
+        return $"Type: {type}, valueRange: {valueRange}, value: {Value}, checkbox: {Checkbox}";
     }
 
 }

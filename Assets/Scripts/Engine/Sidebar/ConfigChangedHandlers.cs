@@ -14,6 +14,13 @@ public class ConfigChangedHandlers : MonoBehaviour
         addHandler("Gravity", (ConfigValue configValue) =>
         {
             Debug.Log(configValue.Value);
+            Physics.gravity = new(Physics.gravity.x, configValue.Value, Physics.gravity.z);
+        });
+
+        addHandler("Time Scale", (ConfigValue configValue) =>
+        {
+            Debug.Log(configValue.Value);
+            Time.timeScale = configValue.Value;
         });
 
 
