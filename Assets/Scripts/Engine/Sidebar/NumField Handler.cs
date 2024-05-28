@@ -10,7 +10,7 @@ public class NumFieldHandler : MonoBehaviour
 
         var inputField = gameObject.GetComponent<TMP_InputField>();
 
-        inputField.text = ""+configValue.Value;
+        inputField.text = configValue.Value.ToString();
 
         // Inbuilt input validation, changes config according to value change
         inputField.onEndEdit.AddListener
@@ -23,7 +23,7 @@ public class NumFieldHandler : MonoBehaviour
                     configValue.Value = fVal;
                 }
                 
-                inputField.text = ""+configValue.Value;
+                inputField.text = configValue.Value.ToString();
             }
         );
     }

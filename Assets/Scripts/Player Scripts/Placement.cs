@@ -109,7 +109,7 @@ public class Placement : MonoBehaviour
     {
         Transform go = GetObjectInFront();
         Element e;
-        if (!go || !(e = go.GetComponentInChildren<Element>()))
+        if (!go || !(e = go.GetComponentInChildren<Element>()) && !(e = go.GetComponentInParent<Element>()))
         {
             _outlinedElement = null;
             Destroy(_outline);

@@ -1,8 +1,11 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ConfigValue
 {
+    public UnityEvent<ConfigValue> ConfigChanged; 
+
     [Flags]
     public enum Type
     {
@@ -11,7 +14,7 @@ public class ConfigValue
     }
 
     public readonly Type type;
-    private float[] valueRange = new float[] {-1, 0, -1};
+    private float[] valueRange = { 0, 0, 0 };
     public float Value
     {
         get
@@ -23,37 +26,42 @@ public class ConfigValue
             bool inBounds = valueRange[0] <= value && value <= valueRange[2];
 
             if (inBounds)
-            {
                 valueRange[1] = value;
-                return;
-            }
-
-            if (value <= valueRange[0])
+            else if (value <= valueRange[0])
                 valueRange[1] = valueRange[0];
             else if (value >= valueRange[2])
                 valueRange[1] = valueRange[2];
+
+            ConfigChanged?.Invoke(this);
         }
     }
-    public bool Checkbox { get; set; } = false;
+
+    private bool _checkbox = false;
+    public bool Checkbox 
+    {
+        get
+        {
+            return _checkbox;
+        }
+        set
+        {
+            _checkbox = value;
+            ConfigChanged?.Invoke(this);
+        }
+    }
 
     public ConfigValue(Type flags, bool checkboxInitialState = false, float[] valueRange = null)
     {
+        ConfigChanged = new();
         type = flags;
         Checkbox = checkboxInitialState;
-        if (valueRange != null) 
-        { 
+        if (valueRange is not null)
             this.valueRange = valueRange; 
-        }
     }
 
-}
-
-public class ConfigValueEventArgs : EventArgs
-{
-    public ConfigValueEventArgs(ConfigValue value)
+    public override string ToString()
     {
-        configValueData = value;
+        return $"Type: {type}, valueRange: {valueRange}, value: {Value}, checkbox: {Checkbox}";
     }
 
-    public readonly ConfigValue configValueData;
 }
