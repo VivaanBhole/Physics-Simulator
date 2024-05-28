@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 909b037deb6893944b08c14fdf58e5e4, type: 3}
+  m_Name: Plane
+  m_EditorClassIdentifier: 
+  Properties: 
+  PropertyValues: []
+  Type: 2
+  Icon: {fileID: 21300000, guid: 0cc0b2e48a55a484fbb8ca010fdf7d46, type: 3}
+  Name: Plane
+  Prefab: {fileID: 7650965983571462838, guid: 7b36dc80a8d3d3f41a0664fdf92efb42, type: 3}

@@ -43,8 +43,8 @@ GameObject:
   - component: {fileID: 1294740178550862258}
   - component: {fileID: 6451519922350974179}
   - component: {fileID: 4501300460605541430}
-  - component: {fileID: 2240904027679594411}
   - component: {fileID: 3278086305732634862}
+  - component: {fileID: 9095346629830886223}
   m_Layer: 0
   m_Name: WireBody
   m_TagString: Untagged
@@ -119,29 +119,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2240904027679594411
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6490850958610310591}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3278086305732634862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +144,29 @@ MonoBehaviour:
   - {fileID: 4861211886383513009}
   DesiredPos: {x: 0, y: 0, z: 0}
   IsConnected: 0
+--- !u!136 &9095346629830886223
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6490850958610310591}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5000002
+  m_Height: 2.0000005
+  m_Direction: 1
+  m_Center: {x: 0.00000005960466, y: 0, z: -0.00000008940697}
 --- !u!1001 &55602784410758580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -231,6 +231,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Connection Point (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4878511121077161989, guid: 4400e1d3359e6d642ba8cb5384c9339a, type: 3}
+      propertyPath: EncompassingElement
+      value: 
+      objectReference: {fileID: 3278086305732634862}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -316,6 +320,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Connection Point
       objectReference: {fileID: 0}
+    - target: {fileID: 4878511121077161989, guid: 4400e1d3359e6d642ba8cb5384c9339a, type: 3}
+      propertyPath: EncompassingElement
+      value: 
+      objectReference: {fileID: 3278086305732634862}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
