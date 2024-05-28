@@ -62,4 +62,5 @@ public class Cylinder : Element
         if (!Finite)
             Charge = LinearChargeDensity * Length;
     }
+
 }

@@ -21,6 +21,10 @@ public class Element : MonoBehaviour
     public virtual void SetVolumeChargeDensity(float d) { }
     public virtual void SetLinearChargeDensity(float d) { }
     public virtual void SetFinite(float f) { }
+    public virtual Vector3 GetMagneticForce(Element other) { return Vector3.zero; }
+    public virtual Vector3 GetElectricForce(Element other) { return Vector3.zero; }
+
+
 
 
 
