@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 909b037deb6893944b08c14fdf58e5e4, type: 3}
+  m_Name: Sphere
+  m_EditorClassIdentifier: 
+  Properties: 00000000
+  PropertyValues:
+  - 5
+  Type: 0
+  Icon: {fileID: 21300000, guid: 2d4a52ab6f0d6a94c9ec509000b1a3fd, type: 3}
+  Name: Sphere
+  Prefab: {fileID: 4717063209423606459, guid: 5a4a632a4030a3640906b6eeec90a0e7, type: 3}
