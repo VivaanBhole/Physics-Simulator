@@ -8,7 +8,9 @@ public class Element : MonoBehaviour
     //Mass, charge, isConuctive, isLocked, velocity, acceleration, forces
 
     public float Mass, Charge;
-    public Vector3 Velocity, Acceleration, MagneticForce, ElectricForce, GravitationalForce, NormalForce;
+
+    // Initialize whenever creating an element
+    public Rigidbody rb;
 
     public virtual void SetMass(float m) { Mass = m; }
     public virtual void SetCharge(float c) { Charge = c; }
