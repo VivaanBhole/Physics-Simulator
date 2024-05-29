@@ -9,15 +9,14 @@ public class ElementData : ScriptableObject
 {
     public enum ElementType
     {
-        Sphere, Point, Plane, Cylinder, PointVoltmeter,
+        Sphere, Point, Plane, Cylinder, PointVoltmeter, Magnet,
         Wire, CircuitVoltmeter, Switch, Inductor, Resistor, Capacitor
     }
 
     public enum ElementProperties
     {
-        Radius, Width, Length, Hollow, Conductive, Charge, Finite,
-        Resistance, Capacitance, Inductance,
-        LinearChargeDensity, AreaChargeDensity, VolumeChargeDensity
+        Mass, Radius, Width, Length, Hollow, Conductive, Charge,
+        Resistance, Capacitance, Inductance, PoleStrength,
     }
     [SerializeField] public List<ElementProperties> Properties;
     [SerializeField] public List<float> PropertyValues;
@@ -65,18 +64,6 @@ public class ElementData : ScriptableObject
                     break;
                 case ElementProperties.Charge:
                     element.SetCharge(PropertyValues[i]);
-                    break;
-                case ElementProperties.Finite:
-                    element.SetFinite(PropertyValues[i]);
-                    break;
-                case ElementProperties.LinearChargeDensity:
-                    element.SetLinearChargeDensity(PropertyValues[i]);
-                    break;
-                case ElementProperties.AreaChargeDensity:
-                    element.SetAreaChargeDensity(PropertyValues[i]);
-                    break;
-                case ElementProperties.VolumeChargeDensity:
-                    element.SetVolumeChargeDensity(PropertyValues[i]);
                     break;
             }
         }

@@ -7,8 +7,6 @@ public class Cylinder : Element
 
     [SerializeField] public float Radius, Length;
     [SerializeField] public bool Hollow;
-    [SerializeField] public bool Finite;
-    [SerializeField] public float VolumeChargeDensity, LinearChargeDensity;
     [SerializeField] public GameObject hollowCylinder, SolidCylinder;
 
     void Start()
@@ -39,28 +37,6 @@ public class Cylinder : Element
         hollowCylinder.SetActive(Hollow);
         SolidCylinder.SetActive(!Hollow);
 
-    }
-
-    public override void SetLinearChargeDensity(float d)
-    {
-        LinearChargeDensity = d;
-        VolumeChargeDensity = d * Mathf.PI * Mathf.Pow(Radius, 2);
-        if (!Finite)
-            Charge = LinearChargeDensity * Length;
-    }
-
-    public override void SetVolumeChargeDensity(float d)
-    {
-        VolumeChargeDensity = d;
-        LinearChargeDensity = d / (Mathf.PI * Mathf.Pow(Radius, 2));
-        if (!Finite)
-            Charge = LinearChargeDensity * Length;
-    }
-    public override void SetFinite(float f)
-    {
-        Finite = f > 0;
-        if (!Finite)
-            Charge = LinearChargeDensity * Length;
     }
 
 }

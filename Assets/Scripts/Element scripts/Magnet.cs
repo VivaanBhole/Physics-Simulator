@@ -1,31 +1,30 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Plane : Element
+public class Magnet : Element
 {
-    public float Length, Width;
+    // Start is called before the first frame update
+
+    [SerializeField] public float PoleStrength, Length;
+
     void Start()
     {
         
     }
 
+    // Update is called once per frame
     void Update()
     {
-        
-    }
 
+    }
     public override void SetLength(float l)
     {
         Length = l;
         transform.localScale += Vector3.right * (l - transform.localScale.x);
     }
 
-    public override void SetWidth(float w)
-    {
-        Width = w;
-        transform.localScale += Vector3.forward * (w - transform.localScale.z);
-
+    public override void SetPoleStrength(float d) {
+        PoleStrength = d;
     }
 }

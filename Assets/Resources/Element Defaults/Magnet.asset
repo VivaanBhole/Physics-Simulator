@@ -10,14 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 909b037deb6893944b08c14fdf58e5e4, type: 3}
-  m_Name: Cylinder
+  m_Name: Magnet
   m_EditorClassIdentifier: 
-  Properties: 000000000200000003000000
-  PropertyValues:
-  - 1
-  - 10
-  - 1
-  Type: 3
-  Icon: {fileID: 21300000, guid: 10c47e2930caff242931a70511b0b2ad, type: 3}
-  Name: Cylinder
-  Prefab: {fileID: 4297149050306098414, guid: 210660e278835584984fd2aad9dcaae3, type: 3}
+  Properties: 
+  PropertyValues: []
+  Type: 5
+  Icon: {fileID: 21300000, guid: 03b322fd80c9ba446a3c3289298459e1, type: 3}
+  Name: Magnet
+  Prefab: {fileID: 1107615387742489735, guid: 55ee53bad76f5154e833fb054065f0d6, type: 3}

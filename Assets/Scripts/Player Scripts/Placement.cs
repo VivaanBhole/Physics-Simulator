@@ -108,8 +108,9 @@ public class Placement : MonoBehaviour
     public void OutlineObject()
     {
         Transform go = GetObjectInFront();
+        
         Element e;
-        if (!go || !(e = go.GetComponentInChildren<Element>()) && !(e = go.GetComponentInParent<Element>()))
+        if (!go || !(e = go.GetComponentInChildren<Element>()))
         {
             _outlinedElement = null;
             Destroy(_outline);
@@ -118,12 +119,13 @@ public class Placement : MonoBehaviour
 
         if (_outlinedElement == null || !go.Equals(_outlinedElement))
         {
+
             _outlinedElement = go;
 
             if (_outline)
                 Destroy(_outline);
 
-            _outline = e.gameObject.AddComponent<Outline>();
+            _outline = e.gameObject.GetComponentInChildren<Renderer>().gameObject.AddComponent<Outline>();
             if (Mode == PlacingMode.Delete)
                 _outline.color = 1;
         }
@@ -176,7 +178,7 @@ public class Placement : MonoBehaviour
 
     private void OpenElementUI(Transform t)
     {
-        //TODO
+        Debug.Log("opening: " + t.name + "'s UI");
     }
 
     private void HandlePlacementInputs()
@@ -229,8 +231,6 @@ public class Placement : MonoBehaviour
 
         if (!rb)
             rb = go.GetComponentInChildren<Element>().gameObject.AddComponent<Rigidbody>();
-
-        //rb.useGravity = false;
 
         return rb;
 
