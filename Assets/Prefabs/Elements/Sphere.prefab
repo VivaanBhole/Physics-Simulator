@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 549072656970249732}
-  - component: {fileID: 3595678055077019741}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -33,29 +32,6 @@ Transform:
   - {fileID: 7595588939878514426}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3595678055077019741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4717063209423606459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e9061444fa48dd479de322632bd2da4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Mass: 1
-  Charge: 0
-  Velocity: {x: 0, y: 0, z: 0}
-  Acceleration: {x: 0, y: 0, z: 0}
-  MagneticForce: {x: 0, y: 0, z: 0}
-  ElectricForce: {x: 0, y: 0, z: 0}
-  GravitationalForce: {x: 0, y: 0, z: 0}
-  NormalForce: {x: 0, y: 0, z: 0}
-  Radius: 5
-  Hollow: 0
-  VolumeChargeDensity: 0
 --- !u!1 &5809384409548597162
 GameObject:
   m_ObjectHideFlags: 0
@@ -68,6 +44,7 @@ GameObject:
   - component: {fileID: 7299691412740191966}
   - component: {fileID: 3747023115300064831}
   - component: {fileID: 3518234245437810789}
+  - component: {fileID: 8430133471368379648}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -85,7 +62,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 549072656970249732}
@@ -161,3 +138,26 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8430133471368379648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809384409548597162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e9061444fa48dd479de322632bd2da4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Mass: 1
+  Charge: 0
+  Velocity: {x: 0, y: 0, z: 0}
+  Acceleration: {x: 0, y: 0, z: 0}
+  MagneticForce: {x: 0, y: 0, z: 0}
+  ElectricForce: {x: 0, y: 0, z: 0}
+  GravitationalForce: {x: 0, y: 0, z: 0}
+  NormalForce: {x: 0, y: 0, z: 0}
+  Radius: 5
+  Hollow: 0
+  VolumeChargeDensity: 0
