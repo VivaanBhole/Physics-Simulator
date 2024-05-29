@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7457864358697162895}
@@ -52,14 +52,10 @@ MonoBehaviour:
   Acceleration: {x: 0, y: 0, z: 0}
   MagneticForce: {x: 0, y: 0, z: 0}
   ElectricForce: {x: 0, y: 0, z: 0}
-  GravitationalForce: {x: 0, y: 0, z: 0}
-  NormalForce: {x: 0, y: 0, z: 0}
+  Data: {fileID: 11400000, guid: 7071990b7769c1640bbe848767d20068, type: 2}
   Radius: 1
-  Length: 10
+  Length: 1
   Hollow: 1
-  Finite: 0
-  VolumeChargeDensity: 0
-  LinearChargeDensity: 0
   hollowCylinder: {fileID: 832320646231991329}
   SolidCylinder: {fileID: 7065342901141052472}
 --- !u!1 &7065342901141052472

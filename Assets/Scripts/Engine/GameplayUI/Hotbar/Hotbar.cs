@@ -33,6 +33,10 @@ public class Hotbar : MonoBehaviour
         {
             SetSelection(4);
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            SetSelection(5);
+        }
     }
 
     public void SetSelection(int index)

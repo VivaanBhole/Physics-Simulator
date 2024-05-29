@@ -24,6 +24,10 @@ public class Placement : MonoBehaviour
 
     public bool CanInteract;
 
+    public PlayerMovement movement;
+
+    private bool inElementMenu, inSidebar;
+
 
 
     public enum PlacingMode
@@ -62,6 +66,30 @@ public class Placement : MonoBehaviour
             HandleRotationInputs();
         }
 
+        //UI
+
+        if (Input.GetMouseButtonDown(0) && _outlinedElement && CanInteract)
+        {
+            if (Mode == PlacingMode.Delete)
+                Delete();
+            if (Mode == PlacingMode.None)
+                OpenElementUI(_outlinedElement);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (inElementMenu) CloseElementUI();
+            if (inSidebar) CloseSidebar();
+        }
+
+        if (Input.GetKeyDown(KeyCode.C) && !inSidebar)
+        {
+            OpenSidebar();
+        }
+
+        if (inSidebar || inElementMenu)
+            return;
+
         //placing elements modes
 
         if (Input.GetKeyDown(KeyCode.P))
@@ -94,14 +122,22 @@ public class Placement : MonoBehaviour
                     Mode = PlacingMode.Delete; break;
             }
 
-        if (Input.GetMouseButtonDown(0) && _outlinedElement && CanInteract)
-        {
-            if (Mode == PlacingMode.Delete)
-                Destroy(_outlinedElement.gameObject);
-            if (Mode == PlacingMode.None)
-                OpenElementUI(_outlinedElement);
-        }
 
+
+    }
+
+    private void OpenSidebar()
+    {
+        inSidebar = true;
+        Config.Instance.transform.localScale = Vector3.one;
+        EnterMenu();
+    }
+
+    private void CloseSidebar()
+    {
+        inSidebar = false;
+        Config.Instance.transform.localScale = Vector3.zero;
+        ExitMenu();
     }
 
 
@@ -110,7 +146,7 @@ public class Placement : MonoBehaviour
         Transform go = GetObjectInFront();
         
         Element e;
-        if (!go || !(e = go.GetComponentInChildren<Element>()))
+        if (!go || !(e = go.GetComponentInChildren<Element>()) && !(e = go.GetComponentInParent<Element>()))
         {
             _outlinedElement = null;
             Destroy(_outline);
@@ -129,6 +165,15 @@ public class Placement : MonoBehaviour
             if (Mode == PlacingMode.Delete)
                 _outline.color = 1;
         }
+    }
+
+    public void Delete()
+    {
+        Transform go = GetObjectInFront();
+        if (go.GetComponentInParent<Element>())
+            Destroy(go.parent.gameObject);
+        else
+            Destroy(go.gameObject);
     }
 
     public virtual IEnumerator PlaceElement(GameObject element)
@@ -178,7 +223,18 @@ public class Placement : MonoBehaviour
 
     private void OpenElementUI(Transform t)
     {
-        Debug.Log("opening: " + t.name + "'s UI");
+        Element e = t.GetComponentInChildren<Element>();
+        if (!e) e = t.GetComponentInParent<Element>();
+        ModifyMenu.Instance.Open(e);
+        EnterMenu();
+        inElementMenu = true;
+    }
+
+    private void CloseElementUI()
+    {
+        ModifyMenu.Instance.Close();
+        ExitMenu();
+        inElementMenu = false;
     }
 
     private void HandlePlacementInputs()
@@ -250,5 +306,21 @@ public class Placement : MonoBehaviour
     private void SetSelection(ElementData s)
     {
         _selection = s;
+    }
+
+    private void EnterMenu()
+    {
+        CanInteract = false;
+        movement.CanLook = false;
+        movement.CanMove = false;
+        movement.ToggleLockedCursor();
+    }
+
+    private void ExitMenu()
+    {
+        CanInteract = true;
+        movement.CanLook = true;
+        movement.CanMove = true;
+        movement.ToggleLockedCursor();
     }
 }

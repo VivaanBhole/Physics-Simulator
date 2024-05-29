@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 909b037deb6893944b08c14fdf58e5e4, type: 3}
   m_Name: Magnet
   m_EditorClassIdentifier: 
-  Properties: 
-  PropertyValues: []
+  Properties: 00000000030000000a000000
+  PropertyValues:
+  - 1
+  - 1
+  - 1
   Type: 5
   Icon: {fileID: 21300000, guid: 03b322fd80c9ba446a3c3289298459e1, type: 3}
   Name: Magnet

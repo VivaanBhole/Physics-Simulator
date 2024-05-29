@@ -21,7 +21,7 @@ public class Magnet : Element
     public override void SetLength(float l)
     {
         Length = l;
-        transform.localScale += Vector3.right * (l - transform.localScale.x);
+        transform.localScale = Vector3.one * l;
     }
 
     public override void SetPoleStrength(float d) {
