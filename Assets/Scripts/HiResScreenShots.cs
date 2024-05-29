@@ -6,7 +6,7 @@ public class HiResScreenShots : MonoBehaviour
 {
     public int resWidth = 2550;
     public int resHeight = 3300;
-    public Camera camera;
+    public new Camera camera;
 
     private bool takeHiResShot = false;
 

@@ -124,12 +124,9 @@ MonoBehaviour:
   Acceleration: {x: 0, y: 0, z: 0}
   MagneticForce: {x: 0, y: 0, z: 0}
   ElectricForce: {x: 0, y: 0, z: 0}
-  GravitationalForce: {x: 0, y: 0, z: 0}
-  NormalForce: {x: 0, y: 0, z: 0}
-  Finite: 0
+  Data: {fileID: 11400000, guid: e9adad6f7c7c45b44a5bbbd7f64e965c, type: 2}
   Length: 0
   Width: 0
-  AreaChargeDensity: 0
 --- !u!1 &7650965983571462838
 GameObject:
   m_ObjectHideFlags: 0

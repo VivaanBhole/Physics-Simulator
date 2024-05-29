@@ -122,10 +122,9 @@ MonoBehaviour:
   Charge: 0
   Velocity: {x: 0, y: 0, z: 0}
   Acceleration: {x: 0, y: 0, z: 0}
-  MagtneticForce: {x: 0, y: 0, z: 0}
+  MagneticForce: {x: 0, y: 0, z: 0}
   ElectricForce: {x: 0, y: 0, z: 0}
-  GravitationalForce: {x: 0, y: 0, z: 0}
-  NormalForce: {x: 0, y: 0, z: 0}
+  Data: {fileID: 11400000, guid: 05bfa8b5cd346b8479d78b9e83025c48, type: 2}
 --- !u!1 &7759141048715930645
 GameObject:
   m_ObjectHideFlags: 0

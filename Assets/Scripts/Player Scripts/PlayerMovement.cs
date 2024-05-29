@@ -39,9 +39,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //for testing only
-        if (Input.GetKeyDown(KeyCode.Escape))
-            CanLook = !CanLook;
 
         if (CanLook)
             HandleMouseMovement();
@@ -104,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void ToggleLockedCursor()
     {
+        Debug.Log("toggled");
         Cursor.visible = !Cursor.visible;
         Cursor.lockState = 1 - Cursor.lockState;
     }
